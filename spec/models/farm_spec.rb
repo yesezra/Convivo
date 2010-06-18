@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Farm do
   before(:each) do
+    @organic_certifier = Factory(:organic_certifier)
+    @farmer = Factory(:farmer)
     @valid_attributes = {
       :name => "Farm Name",
       :organic => false,
@@ -39,4 +41,33 @@ describe Farm do
     no_altitude_farm = Farm.new(@valid_attributes.merge(:altitude => ""))
     no_altitude_farm.should_not be_valid
   end
+  
+  describe "organic certifier associations" do
+    before(:each) do
+      @farm = @organic_certifier.farms.create(@valid_attributes)
+    end
+    
+    it "should have an organic certifier attribute" do
+      @farm.should respond_to(:organic_certifier)
+    end
+    
+    it "should have the right associated organic certifier" do
+      @farm.organic_certifier.should == @organic_certifier
+    end
+  end
+  
+  describe "farmer associations" do
+    before(:each) do
+      @farm = @farmer.farms.create(@valid_attributes)
+    end
+    
+    it "should have a farmer attribute" do
+      @farm.should respond_to(:farmer)
+    end
+    
+    it "should have the right associated farmer" do
+      @farm.farmer.should == @farmer
+    end
+  end
+  
 end

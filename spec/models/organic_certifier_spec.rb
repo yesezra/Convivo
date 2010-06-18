@@ -22,4 +22,15 @@ describe OrganicCertifier do
     no_code_organic_certifier.should_not be_valid
   end
 
+  describe "farm associations" do
+
+    before(:each) do
+      @organic_certifier = OrganicCertifier.create(@valid_attributes)
+    end
+
+    it "should have a farm attribute" do
+      @organic_certifier.should respond_to(:farms)
+    end
+  end
+
 end

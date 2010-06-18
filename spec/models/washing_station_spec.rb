@@ -22,4 +22,14 @@ describe WashingStation do
     no_code_washing_station.should_not be_valid
   end
   
+  describe "farmer associations" do
+
+    before(:each) do
+      @washing_station = WashingStation.create(@valid_attributes)
+    end
+
+    it "should have a farmer attribute" do
+      @washing_station.should respond_to(:farmers)
+    end
+  end
 end

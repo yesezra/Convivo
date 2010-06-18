@@ -1,12 +1,13 @@
 # == Schema Information
-# Schema version: 20100618185553
+# Schema version: 20100618200803
 #
 # Table name: farmers
 #
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id                 :integer         not null, primary key
+#  name               :string(255)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  washing_station_id :integer
 #
 
 class Farmer < ActiveRecord::Base
@@ -14,5 +15,6 @@ class Farmer < ActiveRecord::Base
   
   validates_presence_of :name
   
+  has_many :farms
   belongs_to :washing_station
 end

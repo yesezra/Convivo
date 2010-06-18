@@ -1,16 +1,18 @@
 # == Schema Information
-# Schema version: 20100618185553
+# Schema version: 20100618200803
 #
 # Table name: farms
 #
-#  id         :integer         not null, primary key
-#  name       :string(255)
-#  organic    :boolean
-#  latitude   :float
-#  longitude  :float
-#  altitude   :float
-#  created_at :datetime
-#  updated_at :datetime
+#  id                   :integer         not null, primary key
+#  name                 :string(255)
+#  organic              :boolean
+#  latitude             :float
+#  longitude            :float
+#  altitude             :float
+#  created_at           :datetime
+#  updated_at           :datetime
+#  organic_certifier_id :integer
+#  farmer_id            :integer
 #
 
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
