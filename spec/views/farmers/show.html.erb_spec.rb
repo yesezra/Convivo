@@ -1,17 +1,44 @@
 require 'spec_helper'
 
-describe "/farmers/show" do
-  before(:each) do
-    @farmer = Factory(:farmer)
-    render 'farmers/show', :id => @farmer
-  end
+describe "/farmers/show" do  
+  describe "washing station association" do  
+    before(:each) do
+      assigns[:farmer] = @farmer = stub_model(Farmer,
+        :new_record? => false,
+        :name => "A Farmer"
+      )
+      @farmer.washing_station = stub_model(WashingStation,
+        :new_record? => false,
+        :id => 2,
+        :name => "WS1",
+        :code => "ABC123"
+      )
+    end
 
-  #Delete this example and add some real ones or delete this file
-  it "should tell you where to find the file" do
-    response.should have_tag('p', %r[Find me in app/views/farmers/show])
+    it "should include the farmer's name" do
+      render
+      response.should have_tag("h2", /#{@farmer.name}/)    
+    end
+    
+    it "should include the washing station" do
+      render
+      response.should have_tag("h3")
+    end
+
   end
   
-  it "should include the farmer's name" do
-    response.should have_tag("h2", /#{@farmer.name}/)
+  describe "washing station association" do
+    before(:each) do
+      assigns[:farmer] = @farmer = stub_model(Farmer,
+        :new_record? => false,
+        :name => "A Farmer"
+      )
+    end
+    
+    it "should not include the washing station" do
+      render
+      response.should_not have_tag("h3")
+    end
   end
+
 end

@@ -1,0 +1,2 @@
+module WashingStationsHelper
+end

@@ -1,0 +1,20 @@
+<h1>Editing Organic Certifier</h1>
+
+<% form_for(@organic_certifier) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </p>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @organic_certifier %> |
+<%= link_to 'Back', organic_certifiers_path %>

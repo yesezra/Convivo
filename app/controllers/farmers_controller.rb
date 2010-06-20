@@ -1,6 +1,7 @@
 class FarmersController < ApplicationController
   def index
     @farmers = Farmer.find(:all)
+    @title = "Farmers"
   end
 
   def show
@@ -42,6 +43,6 @@ class FarmersController < ApplicationController
   def destroy
     @farmer = Farmer.find(params[:id])
     @farmer.destroy
-    redirect_to(farmers_url)
+    redirect_to(farmers_url, :notice => 'Farmer was deleted.')
   end
 end

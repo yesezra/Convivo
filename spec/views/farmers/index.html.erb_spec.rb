@@ -2,11 +2,22 @@ require 'spec_helper'
 
 describe "/farmers/index" do
   before(:each) do
-    render 'farmers/index'
+    assigns[:farmers] = @farmers = [
+      stub_model(Farmer,
+        :new_record? => false,
+        :name => "A Farmer"
+        ),
+      stub_model(Farmer,
+        :new_record? => false,
+        :name => "AnotherFarmer"
+      )
+    ]
   end
 
-  #Delete this example and add some real ones or delete this file
-  it "should tell you where to find the file" do
-    response.should have_tag('p', %r[Find me in app/views/farmers/index])
+
+  it "should list all farmers" do
+    render
+    response.should have_tag('tr>td', /#{@farmers[0].name}/)
+    response.should have_tag('tr>td', /#{@farmers[1].name}/)
   end
 end

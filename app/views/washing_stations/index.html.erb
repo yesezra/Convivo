@@ -1,0 +1,25 @@
+<h1>Listing Washing Stations</h1>
+
+<table class="tablesorter">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @washing_stations.each do |ws| %>
+    <tr>
+      <td><%=h ws.name %></td>
+      <td><%= h ws.code %></td>
+      <td><%= link_to 'Show', ws %>&nbsp;
+      <%= link_to 'Edit', edit_washing_station_path(ws) %>&nbsp;
+      <%= link_to 'Destroy', ws, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Washing Station', new_washing_station_path %>
