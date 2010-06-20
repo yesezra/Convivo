@@ -1,0 +1,35 @@
+<h1>Listing farms</h1>
+
+<table class="tablesorter">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Organic</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Altitude</th>
+      <th>Organic Certifier</th>
+      <th>Farmer</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @farms.each do |farm| %>
+    <tr>
+      <td><%=h farm.name %></td>
+      <td><%=h farm.organic.to_s %></td>
+      <td><%=h farm.latitude.to_s %></td>
+      <td><%=h farm.longitude.to_s %></td>
+      <td><%=h farm.altitude.to_s %></td>
+      <td><%=h farm.organic_certifier.name if farm.organic_certifier %></td>
+      <td><%=h farm.farmer.name if farm.farmer %></td>
+      <td><%= link_to 'Show', farm %>&nbsp;
+      <%= link_to 'Edit', edit_farm_path(farm) %>&nbsp;
+      <%= link_to 'Destroy', farm, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New farm', new_farm_path %>

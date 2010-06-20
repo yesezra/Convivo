@@ -16,7 +16,7 @@
 #
 
 class Farm < ActiveRecord::Base
-  attr_accessible :name, :organic, :latitude, :longitude, :altitude
+  attr_accessible :name, :organic, :latitude, :longitude, :altitude, :organic_certifier_id, :farmer_id
 
   validates_presence_of :name, :latitude, :longitude, :altitude
   validates_inclusion_of :organic, :in => [true, false]  

@@ -1,0 +1,13 @@
+<h2><%=h @farm.name %></h2>
+<h3>Organic: <%= @farm.organic.to_s %></h3>
+<h3>Latitude: <%= @farm.latitude.to_s %></h3>
+<h3>Longitude: <%= @farm.longitude.to_s %></h3>
+<h3>Altitude: <%= @farm.altitude.to_s %></h3>
+<% if @farm.organic_certifier %>
+<h3>Organic Certifier: <%= @farm.organic_certifier.name %> </h3>
+<% end %>
+<% if @farm.farmer %>
+<h3>Farmer: <%= @farm.farmer.name %> </h3>
+<% end %>
+<%= link_to 'Edit', edit_farm_path(@farm) %> |
+<%= link_to 'Back', farms_path %>
