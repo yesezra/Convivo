@@ -12,3 +12,13 @@ Factory.define :farmer do |farmer|
   farmer.name       "A Farmer"
   farmer.association :washing_station
 end
+
+Factory.define :farm do |farm|
+  farm.name         "Farm A"
+  farm.organic      true
+  farm.latitude     -77.23
+  farm.longitude    -15.0
+  farm.altitude     150
+  farm.association :organic_certifier
+  farm.association :farmer
+end

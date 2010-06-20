@@ -11,7 +11,7 @@
 #
 
 class Farmer < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :washing_station_id
   
   validates_presence_of :name
   

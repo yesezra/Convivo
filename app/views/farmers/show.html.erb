@@ -1,0 +1,6 @@
+<h2><%=h @farmer.name %></h2>
+<% if @farmer.washing_station %>
+<h3>Washing Station: <%= @farmer.washing_station.name %> </h3>
+<% end %>
+<%= link_to 'Edit', edit_farmer_path(@farmer) %> |
+<%= link_to 'Back', farmers_path %>

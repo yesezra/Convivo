@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title><%= title %></title>
+    <%= render 'layouts/stylesheets' %>
+    <%= render 'layouts/javascript' %>
+  </head>
+  
+  <body>
+    <div class="container">
+      <%= render 'layouts/header' %>
+      <div id="content" class="prepend-1 span-22 append-1 last round">
+        <% flash.each do |key, value| %>
+          <%= content_tag(:div, value, :class => "flash #{key}") %>
+        <% end %> 
+        <%= yield %>
+      </div>
+      <% if Rails.env.development? %>
+      <div id="debug" class="span-24 last"> 
+        <%= debug(params) %>
+      </div>
+      <% end %>
+    </div>
+  </body>
+</html>

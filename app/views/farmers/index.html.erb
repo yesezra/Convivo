@@ -1,0 +1,25 @@
+<h1>Listing farmers</h1>
+
+<table class="tablesorter">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Washing Station</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @farmers.each do |farmer| %>
+    <tr>
+      <td><%=h farmer.name %></td>
+      <td><%= farmer.washing_station.name if farmer.washing_station %></td>
+      <td><%= link_to 'Show', farmer %>&nbsp;
+      <%= link_to 'Edit', edit_farmer_path(farmer) %>&nbsp;
+      <%= link_to 'Destroy', farmer, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New farmer', new_farmer_path %>
